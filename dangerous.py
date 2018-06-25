@@ -52,12 +52,12 @@ class BurpExtender(IBurpExtender, IScannerCheck):
         ########################## need array/dict here of all regexes to search for
         # regexes = ['regex1', 'regex2', 'regex3']
 
-        regex = "localStorage|sessionStorage" ########################## need to remove/rename to regexes
+        regex = "eval" ########################## need to remove/rename to regexes
         ########################## need to find another way of doing the issue info, maybe an issue class with compiled regex inside, along with issue info?
-        issuename = "HTML5 Web Storage Used"
+        issuename = "Dangerous Method Used"
         issuelevel = "Information"
         issuedetail = """The application response contains the following value
-                <br><br><b>$rut$</b><br><br> which indicates the usage of HTML5 Web Storage."""
+                <br><br><b>$rut$</b><br><br>."""
         
         tmp_issues = self._CustomScans.findRegEx(regex, issuename, issuelevel, issuedetail)
         
