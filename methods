@@ -1,3 +1,10 @@
-setInnerHtml
+innerHtml
 eval() in JS
 Angular trustAsHtml etc.
+document.write
+document.writeln
+outerHTML
+insertAdjacentHTML
+document.URL.substring
+jQUery .html()
+jQuery .append()
