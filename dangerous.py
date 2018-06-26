@@ -17,7 +17,7 @@ class BurpExtender(IBurpExtender, IScannerCheck):
         self._callbacks = callbacks
 
         # Set the name of our extension, which will appear in the Extender tool when loaded
-        self._callbacks.setExtensionName("Burp Test Extension")
+        self._callbacks.setExtensionName("Dangerous Methods")
         
         # Register our extension as a custom scanner check, so Burp will use this extension
         # to perform active or passive scanning and report on scan issues returned
@@ -49,15 +49,25 @@ class BurpExtender(IBurpExtender, IScannerCheck):
         # Call the findRegEx method of our CustomScans object to check
         # the response for anything matching a specified regular expression
 
-        ########################## need array/dict here of all regexes to search for
-        # regexes = ['regex1', 'regex2', 'regex3']
+        ########################## need array here of all regexes to search for
+        # regexes = ['eval(', 'document\.write(', 'regex3']
+        # details = ['Ahhhhh eval is bad mmkay? You used <br><b>$result$</b><br>', 'Ahhhhh document.write is bad mmkay? You used <br><b>$result$</b><br>', 'detail3']
+        # issuedetails = {}
+        # for counter, regex in enumerate(regexes)
+        #   issuedetails[regex] = details[counter]
 
-        regex = "eval" ########################## need to remove/rename to regexes
+        # regex = "eval" ########################## need to remove/rename to regexes
+        regex = 'document\.write'
         ########################## need to find another way of doing the issue info, maybe an issue class with compiled regex inside, along with issue info?
         issuename = "Dangerous Method Used"
         issuelevel = "Information"
-        issuedetail = """The application response contains the following value
-                <br><br><b>$rut$</b><br><br>."""
+        issuedetail = """The application response contains the following value: <br><b>$result$</b><br>The use of eval() in Javascript 
+                    is very dangerous and you should feel bad. See [link] for details."""
+
+        # create dicts with key of regex for issuename, issuelevel, issuedetail
+        # iterate through each regex in regexes, and pass regex + issue info
+
+
         
         tmp_issues = self._CustomScans.findRegEx(regex, issuename, issuelevel, issuedetail)
         
@@ -87,12 +97,12 @@ class CustomScans:
 
     # This is a custom scan method to Look for all occurrences in the response
     # that match the passed regular expression
-    def findRegEx(self, regex, issuename, issuelevel, issuedetail): # need to rename regex here to regexes
+    def findRegEx(self, regex, issuename, issuelevel, issuedetail): ########################## need to rename regex here to regexes, add new issue dicts
         scan_issues = []
         offset = array('i', [0, 0])
         response = self._requestResponse.getResponse()
         responseLength = len(response)
-        compiledRegexes = []
+        ########################## compiledRegexes = []
 
         # need for each here to loop through each regex and compile it
         # for regex in regexes:
@@ -121,7 +131,7 @@ class CustomScans:
             scan_issues.append(ScanIssue(self._requestResponse.getHttpService(),
                     self._helpers.analyzeRequest(self._requestResponse).getUrl(), 
                     [self._callbacks.applyMarkers(self._requestResponse, None, offsets)],
-                    issuename, issuelevel, issuedetail.replace("$rut$", ref)))
+                    issuename, issuelevel, issuedetail.replace("$result$", ref)))
 
         return (scan_issues)
 
