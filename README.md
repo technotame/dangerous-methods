@@ -16,6 +16,7 @@ A Burp Suite Professional extension for finding the use of potentially dangerous
 
 * Make regexes longer/more robust
     * Determine valid identifier regex to precede JS methods
+    * Should they be broad enough to prefer false positives over false negatives?
 * Rework issue details and references
 * Send output properly
 * Add new dangerous methods
