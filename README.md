@@ -15,6 +15,8 @@ A Burp Suite Professional extension for finding the use of potentially dangerous
 * Collect references
 
 * Make regexes longer/more robust
+    * Determine valid identifier regex to precede JS methods
+* Rework issue details and references
 * Send output properly
 * Add new dangerous methods
     * Look into templating languages
