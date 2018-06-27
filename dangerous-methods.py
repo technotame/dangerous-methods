@@ -58,7 +58,7 @@ class DoScan:
         # set all regexes, issue details, references etc. here
         regexes = [r'eval\(', r'document\.write\(', r'document\.writeln\(', r'\.innerHTML', r'\.outerHTML', 
                     r'\.insertAdjacentHTML', r'document\.URL\.substring', r'\$\(.*\)\.html\(', r'\.append\(', 
-                    r'\.trustAsHtml\(']
+                    r'\.trustAsHtml\(', r'ng-bind-html-unsafe']
 
         ref = '<b>References:</b>'
         references = [ref + '<ul><li>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval</li></ul>', 
@@ -76,7 +76,8 @@ class DoScan:
                         ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li></ul>',
                         ref + '<ul><li>https://api.jquery.com/html/</li><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
                         ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
-                        ref + '<ul><li></li></ul>']
+                        ref + '<ul><li></li>https://docs.angularjs.org/guide/security</ul>',
+                        ref + '<ul><li>http://erikaugust.com/thoughts/ng-bind-html/</li></ul>',]
         self._references = references
         referencesDict = {}
         for counter, regex in enumerate(regexes):
@@ -100,6 +101,7 @@ class DoScan:
                         dangerous + 'Javascript' + found, 
                         dangerous + 'jQuery' + found, 
                         dangerous + 'jQuery' + found, 
+                        dangerous + 'Angular' + found,
                         dangerous + 'Angular' + found]
 
         issuesDetailsDict = {}
