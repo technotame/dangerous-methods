@@ -22,6 +22,7 @@
 * jQuery .insertAfter(): `\.insertAfter\(`
 * jQuery .prepend(): `\.prepend\(`
 * jQuery .prependTo(): `\.prependTo\(`
+* jQuery .wrap(): `\.wrap\(`
 
 ### References
 * eval()
@@ -62,4 +63,6 @@
 * jQuery .prepend()
     * [Unsafe jQuery Methods](https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods)
 * jQuery .prependTo()
+    * [Unsafe jQuery Methods](https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods)
+* jQuery .wrap()
     * [Unsafe jQuery Methods](https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods)

@@ -59,7 +59,7 @@ class DoScan:
         regexes = [r'eval\(', r'document\.write\(', r'document\.writeln\(', r'\.innerHTML', r'\.outerHTML', 
                     r'\.insertAdjacentHTML', r'document\.URL\.substring', r'\$\(.*\)\.html\(', r'\.append\(', 
                     r'\.trustAsHtml\(', r'ng-bind-html-unsafe', r'\.setAttribute\(', r'\.insertBefore\(',
-                    r'\.insertAfter\(', r'\.prepend\(', r'\.prependTo\(']
+                    r'\.insertAfter\(', r'\.prepend\(', r'\.prependTo\(', r'\.wrap\(']
 
         ref = '<b>References:</b>'
         references = [ref + '<ul><li>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval</li></ul>', 
@@ -83,6 +83,7 @@ class DoScan:
                         ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
                         ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
                         ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
+                        ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
                         ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>']
 
         self._references = references
@@ -96,25 +97,14 @@ class DoScan:
         self._regexLength = regexLength
 
         dangerous = 'The following potentially dangerous '
-        
         found = ' method has been found: <br><br><b>$val$</b><br><br>'
+        jsFound = dangerous + 'Javascript' + found
+        jqueryFound = dangerous + 'jQuery' + found
+        angularFound = dangerous + 'AngularJS' + found
 
-        issueDetails = [dangerous + 'Javascript' + found, 
-                        dangerous + 'Javascript' + found, 
-                        dangerous + 'Javascript' + found, 
-                        dangerous + 'Javascript' + found, 
-                        dangerous + 'Javascript' + found, 
-                        dangerous + 'Javascript' + found, 
-                        dangerous + 'Javascript' + found, 
-                        dangerous + 'jQuery' + found, 
-                        dangerous + 'jQuery' + found, 
-                        dangerous + 'AngularJS' + found,
-                        dangerous + 'AngularJS' + found,
-                        dangerous + 'Javascript' + found,
-                        dangerous + 'jQuery' + found,
-                        dangerous + 'jQuery' + found,
-                        dangerous + 'jQuery' + found,
-                        dangerous + 'jQuery' + found]
+        issueDetails = [jsFound, jsFound, jsFound, jsFound, jsFound, jsFound, jsFound, jqueryFound, 
+                        jqueryFound, angularFound,angularFound,jsFound,jqueryFound,jqueryFound,
+                        jqueryFound, jqueryFound, jqueryFound]
 
         issuesDetailsDict = {}
         for counter, regex in enumerate(regexes):
