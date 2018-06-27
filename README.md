@@ -11,7 +11,7 @@ A Burp Suite Professional extension for finding the use of potentially dangerous
 
 ### Todo
 * Collect references
-* Add screenshots
+
 * Make regexes longer/more robust
 * Send output properly
 * Add new dangerous methods
@@ -19,3 +19,4 @@ A Burp Suite Professional extension for finding the use of potentially dangerous
 * Add extension information to registerExtenderCallbacks output
 * ~~Find out if Burp Pro is needed~~
 * ~~Throw exceptions where needed~~
+* Add ~~screenshots~~
