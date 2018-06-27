@@ -22,6 +22,7 @@
 * jQuery .append(): `'\.append\('`
 * Angular .trustAsHtml(): `'\.trustAsHtml\('`
 * Angular ng-bind-html-unsafe: `ng-bind-html-unsafe`
+* .setAttribute(: `\.setAttribute\(`
 
 ### References
 * eval()
@@ -53,3 +54,5 @@
     * [AngularJS Security Guide](https://docs.angularjs.org/guide/security)
 * Angular ng-bind-html-unsafe
     * [ng-bind-html-unsafe](http://erikaugust.com/thoughts/ng-bind-html/)
+* .setAttribute(
+    * [OWASP](https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet)
