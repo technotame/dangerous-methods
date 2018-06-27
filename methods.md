@@ -1,8 +1,8 @@
-### To add
+### To Add
 * [dangerous PHP](https://www.eukhost.com/blog/webhosting/dangerous-php-functions-must-be-disabled)
 * Angular ng-bind-html-unsafe
 
-### Regex Added
+### Regexes Added
 * innerHtml(): `'\.innerHTML'`
 * eval(): `'eval\('`
 * document.write(): `'eval\('`
