@@ -22,8 +22,6 @@ class BurpExtender(IBurpExtender, IScannerCheck):
     # passing the self object as well for access to helper functions, etc.
     # java.util.List<IScanIssue> doPassiveScan(IHttpRequestResponse baseRequestResponse)
     def doPassiveScan(self, baseRequestResponse):
-        # do passive scan stuff here (i.e. call custom scan method)
-        # returns 'A list of IScanIssue objects, or null if no issues are identified', else return None
         print '[*] Passive scan is a go.'
         try:
             scanObject = DoScan(baseRequestResponse, self._callbacks)
@@ -64,12 +62,12 @@ class DoScan:
         self._regexes = regexes
         self._regexLength = regexLength
 
-        issueDetails = ['The following dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>', 
-                        'The following dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
-                        'The following dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
-                        'The following dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
-                        'The following dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
-                        'The following dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>']
+        issueDetails = ['The following potentially dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>', 
+                        'The following potentially dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
+                        'The following potentially dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
+                        'The following potentially dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
+                        'The following potentially dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
+                        'The following potentially dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>']
         issuesDetailsDict = {}
         for counter, regex in enumerate(regexes):
             issuesDetailsDict[regex] = issueDetails[counter]
@@ -154,7 +152,8 @@ class ScanIssue(IScanIssue):
         return 'Certain'
 
     def getIssueBackground(self):
-        return None
+        return 'Issue background here.'
+        # return None
 
     def getRemediationBackground(self):
         return None
