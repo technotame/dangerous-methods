@@ -147,13 +147,12 @@ class ScanIssue(IScanIssue):
     def getSeverity(self):
         return 'Information'
 
-    # statically setting to 'Certain'
+    # statically setting to 'Firm'
     def getConfidence(self):
-        return 'Certain'
+        return 'Firm'
 
     def getIssueBackground(self):
-        return 'Issue background here.'
-        # return None
+        return None
 
     def getRemediationBackground(self):
         return None
@@ -162,7 +161,7 @@ class ScanIssue(IScanIssue):
         return self._issueDetail
 
     def getRemediationDetail(self):
-        return None
+        return 'Remediation details here. <br><br><b>References:</b><ul><li></li></ul>'
 
     def getHttpMessages(self):
         return self._requestResponse
