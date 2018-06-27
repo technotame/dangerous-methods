@@ -59,7 +59,7 @@ class DoScan:
     def __init__(self, requestResponse, callbacks):
         self._requestResponse = requestResponse
         self._callbacks = callbacks
-        # get local instance of getHelpers for helper functionss
+        # get local instance of getHelpers for helper functions
         self._helpers = self._callbacks.getHelpers()
 
         # set all regexes, issue details, references etc. here
