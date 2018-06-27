@@ -21,4 +21,4 @@ A Burp Suite Professional extension for finding the use of potentially dangerous
 * Add extension information to registerExtenderCallbacks output
 * ~~Find out if Burp Pro is needed~~
 * ~~Throw exceptions where needed~~
-* Add ~~screenshots~~
+* ~~Add screenshots~~
