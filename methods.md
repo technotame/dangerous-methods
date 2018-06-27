@@ -1,14 +1,12 @@
 ### To Add
 * [dangerous PHP](https://www.eukhost.com/blog/webhosting/dangerous-php-functions-must-be-disabled)
-* HTML Element.setAttribute(...) see OWASP reference
-* .insertBefore()
-* .insertAfter()
-* .prepend()
-* .prependTo()
-* .wrap()
-* .wrapAll()
-* .before()
-* .after()
+* jQuery .insertAfter()
+* jQuery .prepend()
+* jQuery .prependTo()
+* jQuery .wrap()
+* jQuery .wrapAll()
+* jQuery .before()
+* jQuery .after()
 
 ### Regexes Added
 * eval(): `'eval\('`
@@ -23,6 +21,7 @@
 * Angular .trustAsHtml(): `'\.trustAsHtml\('`
 * Angular ng-bind-html-unsafe: `ng-bind-html-unsafe`
 * .setAttribute(: `\.setAttribute\(`
+* jQuery .insertBefore(): `\.insertBefore\(`
 
 ### References
 * eval()
@@ -56,3 +55,5 @@
     * [ng-bind-html-unsafe](http://erikaugust.com/thoughts/ng-bind-html/)
 * .setAttribute(
     * [OWASP](https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet)
+* jQuery .insertBefore()
+    * [Unsafe jQuery Methods](https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods)
