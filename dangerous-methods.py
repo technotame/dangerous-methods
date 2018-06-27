@@ -79,13 +79,11 @@ class DoScan:
 
     def regexSearch(self):
         response = self._requestResponse.getResponse()
-        responseLength = len(response)
         offset = []
         offsetArray = array('i', [0, 0])
 
         issues = []
 
-        # TODO figure out why it's only skipping to first occurence of eval
         for i in range(0, self._regexLength):
             offset = []
             # compile regex
@@ -94,18 +92,15 @@ class DoScan:
             except:
                 print '[*] Failed to compile regex!'
                 # need to throw exception here
-            matched = compiledRegex.findall(self._helpers.bytesToString(response))
-            print '[*] Matched is: ' + str(matched)
+            matched = compiledRegex.finditer(self._helpers.bytesToString(response))
 
             # find offsets for all matches
             for match in matched:
                 offset = []
-                print '[*] match is: ' + str(match)
-                beginning = self._helpers.indexOf(response, match, True, 0, responseLength)
-                offsetArray[0] = beginning
-                offsetArray[1] = beginning + len(match)
+                span = match.span()
+                offsetArray[0] = span[0]
+                offsetArray[1] = span[1]
                 offset.append(offsetArray)
-                print '[*] Offset is: ' + str(offset)
 
                 # create temp ScanIssue and add to ScanIssue list
                 print '[*] Trying to create issue!'
@@ -117,7 +112,6 @@ class DoScan:
                 except:
                     print '[*] Appending issue failed'
 
-        # clear each variable used, like ScanIssue object, regex, offset etc
         return issues
 
 
