@@ -1,8 +1,8 @@
 # Dangerous Methods
 A Burp Suite Professional extension for finding the use of potentially dangerous methods/functions in Javascript, jQuery, AngularJS, and others.
 
-* Powered by regular expressions
 * Passive scanner checks create informational issues in Burp Suite
+* Powered by regular expressions
 * Written in Python
 * Requires Jython 2.7+ 
 * x checks in 3 frameworks/languages
