@@ -6,8 +6,12 @@ A Burp Suite Professional extension for finding the use of potentially dangerous
 * Written in Python
 * Requires Jython 2.7+ 
 
+### Screenshots
+[![Example Issue](https://gitlab.com/technotame/dangerous-methods/screenshots/dangerous-methods-issue.png)]
+
 ### Todo
 * Collect references
+* Add screenshots
 * Make regexes longer/more robust
 * Send output properly
 * Add new dangerous methods
