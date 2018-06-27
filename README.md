@@ -13,8 +13,7 @@ A Burp Suite Professional extension for finding the use of potentially dangerous
 
 ### Todo
 * Collect references
-
-* Make regexes longer/more robust
+* Make regexes longer/more robust/more accurate
     * Determine valid identifier regex to precede JS methods
     * Should they be broad enough to prefer false positives over false negatives?
 * Rework issue details and references
