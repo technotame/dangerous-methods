@@ -12,6 +12,7 @@ A Burp Suite extension for finding the use of potentially dangerous methods/func
 * Make regexes longer/more robust
 * Send output properly
 * Add new dangerous methods
+    * Look into templating languages
 * Add extension information to registerExtenderCallbacks output
 * ~~Find out if Burp Pro is needed~~
 * ~~Throw exceptions where needed~~
