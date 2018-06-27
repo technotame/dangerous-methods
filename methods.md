@@ -1,7 +1,6 @@
 ### To Add
 * [dangerous PHP](https://www.eukhost.com/blog/webhosting/dangerous-php-functions-must-be-disabled)
 
-
 ### Regexes Added
 * eval(): `'eval\('`
 * document.write(): `'eval\('`
