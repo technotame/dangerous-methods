@@ -73,32 +73,31 @@ class DoScan:
                    r'\.wrap\(', r'\.wrapAll\(', r'\.before\(', r'\.after\(']
 
         ref = '<b>References:</b>'
+        badJSlink = '<li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>'
+        owaspXSSLink = '<li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li>'
+        badjQueryLink = '<li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li>'
+
         references = [ref + '<ul><li>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval</li></ul>',
-                      ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
-                      <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
-                      ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
-                      <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
-                      ref + '<ul><li>https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML</li>\
-                      <li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
-                      <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
-                      ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
-                      <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
-                      ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
-                      <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
-                      ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li></ul>',
-                      ref + '<ul><li>https://api.jquery.com/html/</li><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
-                      ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
+                      ref + '<ul>' + badJSlink + owaspXSSLink + '</ul>',
+                      ref + '<ul>' + badJSlink + owaspXSSLink + '</ul>',
+                      ref + '<ul><li>https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML</li>' +
+                      badJSlink + owaspXSSLink + '</ul>',
+                      ref + '<ul>' + badJSlink + owaspXSSLink + '</ul>',
+                      ref + '<ul>' + badJSlink + owaspXSSLink + '</ul>',
+                      ref + '<ul>' + badJSlink + '</ul>',
+                      ref + '<ul><li>https://api.jquery.com/html/</li>' + badjQueryLink + '</ul>',
+                      ref + '<ul>' + badjQueryLink + '</ul>',
                       ref + '<ul><li></li>https://docs.angularjs.org/guide/security</ul>',
                       ref + '<ul><li>http://erikaugust.com/thoughts/ng-bind-html/</li></ul>',
-                      ref + '<ul><li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
-                      ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
-                      ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
-                      ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
-                      ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
-                      ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
-                      ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
-                      ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
-                      ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>']
+                      ref + '<ul>' + owaspXSSLink + '</ul>',
+                      ref + '<ul>' + badjQueryLink + '</ul>',
+                      ref + '<ul>' + badjQueryLink + '</ul>',
+                      ref + '<ul>' + badjQueryLink + '</ul>',
+                      ref + '<ul>' + badjQueryLink + '</ul>',
+                      ref + '<ul>' + badjQueryLink + '</ul>',
+                      ref + '<ul>' + badjQueryLink + '</ul>',
+                      ref + '<ul>' + badjQueryLink + '</ul>',
+                      ref + '<ul>' + badjQueryLink + '</ul>']
 
         self._references = references
         referencesDict = {}
