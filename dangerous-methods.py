@@ -44,9 +44,7 @@ class BurpExtender(IBurpExtender, IScannerCheck):
     
     # 'The Scanner invokes this method when the custom Scanner check has reported multiple issues for the same URL path'
     # 'The method should return -1 to report the existing issue only, 0 to report both issues, and 1 to report the new issue only.'
-    # we return 0 here to indicate we want to report both, as we may see multiple instances of the same issue
     # int consolidateDuplicateIssues(IScanIssue existingIssue, IScanIssue newIssue)
-    # may not need this?????
     def consolidateDuplicateIssues(self, existingIssue, newIssue):
         if (existingIssue.getIssueDetail() == newIssue.getIssueDetail()):
             return -1
