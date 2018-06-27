@@ -7,21 +7,25 @@ import re
 
 # inherit IBurpExtender as base class, which defines registerExtenderCallbacks
 # inherit IScannerCheck to register as custom scanner
-class BurpExtender(IBurpExtender, IScannerCheck):
 
+
+class BurpExtender(IBurpExtender, IScannerCheck):
     # get references to callbacks, called when extension is loaded
-    def	registerExtenderCallbacks(self, callbacks):
+    def registerExtenderCallbacks(self, callbacks):
         # get a local instance of callbacks object
         self._callbacks = callbacks
         self._callbacks.setExtensionName("Dangerous Methods")
         # register as scanner object so we get used for active/passive scans
         self._callbacks.registerScannerCheck(self)
-        print '[*] Dangerous Methods extension registered.\n\nhttps://gitlab.com/technotame/dangerous-methods\n\ntechnotame 2018'
+        print '[*] Dangerous Methods extension registered.\n\nhttps://gitlab\
+                .com/technotame/dangerous-methods\n\ntechnotame 2018'
         return
 
-    # 'The Scanner invokes this method for each base request/response that is passively scanned'
+    # 'The Scanner invokes this method for each base request/response that is
+    # passively scanned'
     # passing the self object as well for access to helper functions, etc.
-    # java.util.List<IScanIssue> doPassiveScan(IHttpRequestResponse baseRequestResponse)
+    # java.util.List<IScanIssue> doPassiveScan(IHttpRequestResponse
+    # baseRequestResponse)
     def doPassiveScan(self, baseRequestResponse):
         try:
             scanObject = DoScan(baseRequestResponse, self._callbacks)
@@ -31,15 +35,17 @@ class BurpExtender(IBurpExtender, IScannerCheck):
             scanResult = scanObject.regexSearch()
         except:
             raise RuntimeException('Failed to call scanObject.regexSearch.')
-        
+
         if(len(scanResult) > 0):
             return scanResult
         else:
             return None
-    
-    # 'The Scanner invokes this method when the custom Scanner check has reported multiple issues for the same URL path'
-    # 'The method should return -1 to report the existing issue only, 0 to report both issues, and 1 to report the new issue only.'
-    # int consolidateDuplicateIssues(IScanIssue existingIssue, IScanIssue newIssue)
+
+    # 'The Scanner invokes this method when the custom Scanner check has
+    # reported multiple issues for the same URL path'
+    # 'The method should return -1 to report the existing issue only, 0 to
+    # report both issues, and 1 to report the new issue only.'
+    # consolidateDuplicateIssues(IScanIssue existingIssue, IScanIssue newIssue)
     def consolidateDuplicateIssues(self, existingIssue, newIssue):
         if (existingIssue.getIssueDetail() == newIssue.getIssueDetail()):
             return -1
@@ -48,6 +54,8 @@ class BurpExtender(IBurpExtender, IScannerCheck):
 
 # Custom class to perform scans
 # Returns list of ScanIssue object(s)
+
+
 class DoScan:
     def __init__(self, requestResponse, callbacks):
         self._requestResponse = requestResponse
@@ -56,36 +64,36 @@ class DoScan:
         self._helpers = self._callbacks.getHelpers()
 
         # set all regexes, issue details, references etc. here
-        regexes = [r'eval\(', r'document\.write\(', r'document\.writeln\(', r'\.innerHTML', r'\.outerHTML', 
-                    r'\.insertAdjacentHTML', r'document\.URL\.substring', r'\$\(.*\)\.html\(', r'\.append\(', 
-                    r'\.trustAsHtml\(', r'ng-bind-html-unsafe', r'\.setAttribute\(', r'\.insertBefore\(',
-                    r'\.insertAfter\(', r'\.prepend\(', r'\.prependTo\(', r'\.wrap\(', r'\.wrapAll\(']
+        regexes = [r'eval\(', r'document\.write\(', r'document\.writeln\(', r'\.innerHTML', r'\.outerHTML',
+                   r'\.insertAdjacentHTML', r'document\.URL\.substring', r'\$\(.*\)\.html\(', r'\.append\(',
+                   r'\.trustAsHtml\(', r'ng-bind-html-unsafe', r'\.setAttribute\(', r'\.insertBefore\(',
+                   r'\.insertAfter\(', r'\.prepend\(', r'\.prependTo\(', r'\.wrap\(', r'\.wrapAll\(']
 
         ref = '<b>References:</b>'
-        references = [ref + '<ul><li>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval</li></ul>', 
-                        ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
-                        <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>', 
-                        ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
-                        <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
-                        ref + '<ul><li>https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML</li>\
-                        <li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
-                        <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
-                        ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
-                        <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
-                        ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
-                        <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
-                        ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li></ul>',
-                        ref + '<ul><li>https://api.jquery.com/html/</li><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
-                        ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
-                        ref + '<ul><li></li>https://docs.angularjs.org/guide/security</ul>',
-                        ref + '<ul><li>http://erikaugust.com/thoughts/ng-bind-html/</li></ul>',
-                        ref + '<ul><li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
-                        ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
-                        ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
-                        ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
-                        ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
-                        ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
-                        ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>']
+        references = [ref + '<ul><li>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval</li></ul>',
+                      ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
+                      <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
+                      ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
+                      <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
+                      ref + '<ul><li>https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML</li>\
+                      <li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
+                      <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
+                      ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
+                      <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
+                      ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
+                      <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
+                      ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li></ul>',
+                      ref + '<ul><li>https://api.jquery.com/html/</li><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
+                      ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
+                      ref + '<ul><li></li>https://docs.angularjs.org/guide/security</ul>',
+                      ref + '<ul><li>http://erikaugust.com/thoughts/ng-bind-html/</li></ul>',
+                      ref + '<ul><li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
+                      ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
+                      ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
+                      ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
+                      ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
+                      ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
+                      ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>']
 
         self._references = references
         referencesDict = {}
@@ -103,8 +111,9 @@ class DoScan:
         jqueryFound = dangerous + 'jQuery' + found
         angularFound = dangerous + 'AngularJS' + found
 
-        issueDetails = [jsFound, jsFound, jsFound, jsFound, jsFound, jsFound, jsFound, jqueryFound, 
-                        jqueryFound, angularFound,angularFound,jsFound,jqueryFound,jqueryFound,
+        issueDetails = [jsFound, jsFound, jsFound, jsFound, jsFound, jsFound,
+                        jsFound, jqueryFound, jqueryFound, angularFound,
+                        angularFound, jsFound, jqueryFound, jqueryFound,
                         jqueryFound, jqueryFound, jqueryFound, jqueryFound]
 
         issuesDetailsDict = {}
@@ -146,8 +155,10 @@ class DoScan:
 
                 # create temp ScanIssue and add to ScanIssue list
                 try:
-                    tempIssue = ScanIssue(self._requestResponse.getHttpService(), self._helpers.analyzeRequest(self._requestResponse).getUrl(), 
-                        [self._callbacks.applyMarkers(self._requestResponse, None, offset)], self._issueName, False, detail + self._references[i])
+                    tempIssue = ScanIssue(self._requestResponse.getHttpService(),
+                                          self._helpers.analyzeRequest(self._requestResponse).getUrl(),
+                                          [self._callbacks.applyMarkers(self._requestResponse, None, offset)],
+                                          self._issueName, False, detail + self._references[i])
                 except:
                     raise RuntimeException('Failed to create issue.')
                 try:
@@ -157,14 +168,22 @@ class DoScan:
 
         return issues
 
-# 'This interface is used to retrieve details of Scanner issues. Extensions can obtain details of issues by registering an IScannerListener or 
-# by calling IBurpExtenderCallbacks.getScanIssues(). Extensions can also add custom Scanner issues by registering an IScannerCheck or calling 
-# IBurpExtenderCallbacks.addScanIssue(), and providing their own implementations of this interface. Note that issue descriptions and other text 
-# generated by extensions are subject to an HTML whitelist that allows only formatting tags and simple hyperlinks.'
-# Here we are implementing our own custom scan issue to set scan issue information parameters and create getters for each parameter
+# 'This interface is used to retrieve details of Scanner issues. Extensions
+# can obtain details of issues by registering an IScannerListener or
+# by calling IBurpExtenderCallbacks.getScanIssues(). Extensions can also add
+# custom Scanner issues by registering an IScannerCheck or calling
+# IBurpExtenderCallbacks.addScanIssue(), and providing their own
+# implementations of this interface. Note that issue descriptions and other
+# text generated by extensions are subject to an HTML whitelist that allows
+# only formatting tags and simple hyperlinks.'
+# Here we are implementing our own custom scan issue to set scan issue
+# information parameters and create getters for each parameter
+
+
 class ScanIssue(IScanIssue):
     # constructor for setting issue information
-    def __init__(self, httpService, url, requestResponse, name, severity, issueDetail):
+    def __init__(self, httpService, url, requestResponse, name, severity,
+                 issueDetail):
         self._httpService = httpService
         self._url = url
         self._requestResponse = requestResponse
