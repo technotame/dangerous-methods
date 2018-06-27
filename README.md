@@ -5,7 +5,7 @@ A Burp Suite Professional extension for finding the use of potentially dangerous
 * Powered by regular expressions
 * Written in Python
 * Requires Jython 2.7+ 
-* x checks in 3 frameworks/languages
+* x checks across 3 frameworks/languages
 * Pull requests welcome!
 
 ### Screenshots
