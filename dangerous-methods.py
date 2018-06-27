@@ -59,7 +59,7 @@ class DoScan:
         regexes = [r'eval\(', r'document\.write\(', r'document\.writeln\(', r'\.innerHTML', r'\.outerHTML', 
                     r'\.insertAdjacentHTML', r'document\.URL\.substring', r'\$\(.*\)\.html\(', r'\.append\(', 
                     r'\.trustAsHtml\(', r'ng-bind-html-unsafe', r'\.setAttribute\(', r'\.insertBefore\(',
-                    r'\.insertAfter\(', r'\.prepend\(', r'\.prependTo\(', r'\.wrap\(']
+                    r'\.insertAfter\(', r'\.prepend\(', r'\.prependTo\(', r'\.wrap\(', r'\.wrapAll\(']
 
         ref = '<b>References:</b>'
         references = [ref + '<ul><li>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval</li></ul>', 
@@ -84,6 +84,7 @@ class DoScan:
                         ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
                         ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
                         ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
+                        ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
                         ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>']
 
         self._references = references
@@ -104,7 +105,7 @@ class DoScan:
 
         issueDetails = [jsFound, jsFound, jsFound, jsFound, jsFound, jsFound, jsFound, jqueryFound, 
                         jqueryFound, angularFound,angularFound,jsFound,jqueryFound,jqueryFound,
-                        jqueryFound, jqueryFound, jqueryFound]
+                        jqueryFound, jqueryFound, jqueryFound, jqueryFound]
 
         issuesDetailsDict = {}
         for counter, regex in enumerate(regexes):
