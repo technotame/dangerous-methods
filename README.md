@@ -5,6 +5,8 @@ A Burp Suite Professional extension for finding the use of potentially dangerous
 * Creates informational issues in Burp Suite
 * Written in Python
 * Requires Jython 2.7+ 
+* x checks in 3 frameworks/languages
+* Pull requests welcome!
 
 ### Screenshots
 [![Example Issue](screenshots/dangerous-methods-issue.png)]
