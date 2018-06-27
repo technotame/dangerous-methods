@@ -1,6 +1,7 @@
 ### To add
 * [dangerous PHP](https://www.eukhost.com/blog/webhosting/dangerous-php-functions-must-be-disabled)
-* Angular trustAsHtml etc.
+
+* Angular ng-bind-html-unsafe
 
 ### Regex Added
 * innerHtml
@@ -12,6 +13,7 @@
 * document.URL.substring
 * jQUery .html()
 * jQuery .append()
+* Angular .trustAsHtml(
 
 ### References
 * innerHtml
@@ -31,4 +33,6 @@
 * jQUery .html()
     * 
 * jQuery .append()
+    * 
+* Angular .trustAsHtml(
     * 
