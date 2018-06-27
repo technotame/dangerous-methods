@@ -1,6 +1,5 @@
 ### To add
 * [dangerous PHP](https://www.eukhost.com/blog/webhosting/dangerous-php-functions-must-be-disabled)
-
 * Angular ng-bind-html-unsafe
 
 ### Regex Added
