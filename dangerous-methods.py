@@ -48,7 +48,10 @@ class BurpExtender(IBurpExtender, IScannerCheck):
     # int consolidateDuplicateIssues(IScanIssue existingIssue, IScanIssue newIssue)
     # may not need this?????
     def consolidateDuplicateIssues(self, existingIssue, newIssue):
-        return 0
+        if (existingIssue.getIssueDetail() == newIssue.getIssueDetail()):
+            return -1
+        else:
+            return 0
 
 # Custom class to perform scans
 # Returns list of ScanIssue object(s)
