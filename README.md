@@ -7,7 +7,7 @@ A Burp Suite Professional extension for finding the use of potentially dangerous
 * Requires Jython 2.7+ 
 
 ### Screenshots
-[![Example Issue](https://gitlab.com/technotame/dangerous-methods/screenshots/dangerous-methods-issue.png)]
+[![Example Issue](https://gitlab.com/technotame/dangerous-methods/blob/master/screenshots/dangerous-methods-issue.png)]
 
 ### Todo
 * Collect references
