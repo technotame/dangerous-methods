@@ -21,6 +21,7 @@ A Burp Suite Professional extension for finding the use of potentially dangerous
 * Add new dangerous methods
     * Look into templating languages
 * Add extension information to registerExtenderCallbacks output
+* Possibly load regexes/references from file?
 * Write better/more realistic test app
 * ~~Find out if Burp Pro is needed~~
 * ~~Throw exceptions where needed~~
