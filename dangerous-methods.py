@@ -60,23 +60,47 @@ class DoScan:
                     r'\.insertAdjacentHTML', r'document\.URL\.substring', r'\$\(.*\)\.html\(', r'\.append\(', 
                     r'\.trustAsHtml\(']
 
+        ref = '<b>References:</b>'
+        references = [ref + '<ul><li>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval</li></ul>', 
+                        ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
+                        <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>', 
+                        ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
+                        <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
+                        ref + '<ul><li>https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML</li>\
+                        <li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
+                        <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
+                        ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
+                        <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
+                        ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>\
+                        <li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
+                        ref + '<ul><li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li></ul>',
+                        ref + '<ul><li>https://api.jquery.com/html/</li><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
+                        ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
+                        ref + '<ul><li></li></ul>']
+        self._references = references
+        referencesDict = {}
+        for counter, regex in enumerate(regexes):
+            referencesDict[regex] = references[counter]
+
+        # print referencesDict
         regexLength = len(regexes)
         self._regexes = regexes
         self._regexLength = regexLength
+
         dangerous = 'The following potentially dangerous '
-        references = '<b>References:</b><ul><li></li></ul>'
+        
         found = ' method has been found: <br><br><b>$val$</b><br><br>'
 
-        issueDetails = [dangerous + 'Javascript' + found + references, 
-                        dangerous + 'Javascript' + found + references, 
-                        dangerous + 'Javascript' + found + references, 
-                        dangerous + 'Javascript' + found + references, 
-                        dangerous + 'Javascript' + found + references, 
-                        dangerous + 'Javascript' + found + references, 
-                        dangerous + 'Javascript' + found + references, 
-                        dangerous + 'jQuery' + found + references, 
-                        dangerous + 'jQuery' + found + references, 
-                        dangerous + 'Angular' + found + references]
+        issueDetails = [dangerous + 'Javascript' + found, 
+                        dangerous + 'Javascript' + found, 
+                        dangerous + 'Javascript' + found, 
+                        dangerous + 'Javascript' + found, 
+                        dangerous + 'Javascript' + found, 
+                        dangerous + 'Javascript' + found, 
+                        dangerous + 'Javascript' + found, 
+                        dangerous + 'jQuery' + found, 
+                        dangerous + 'jQuery' + found, 
+                        dangerous + 'Angular' + found]
 
         issuesDetailsDict = {}
         for counter, regex in enumerate(regexes):
@@ -118,7 +142,7 @@ class DoScan:
                 # create temp ScanIssue and add to ScanIssue list
                 try:
                     tempIssue = ScanIssue(self._requestResponse.getHttpService(), self._helpers.analyzeRequest(self._requestResponse).getUrl(), 
-                        [self._callbacks.applyMarkers(self._requestResponse, None, offset)], self._issueName, False, detail)
+                        [self._callbacks.applyMarkers(self._requestResponse, None, offset)], self._issueName, False, detail + self._references[i])
                 except:
                     raise RuntimeException('Failed to create issue.')
                 try:

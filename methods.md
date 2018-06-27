@@ -12,10 +12,10 @@
 * .after()
 
 ### Regexes Added
-* innerHtml(): `'\.innerHTML'`
 * eval(): `'eval\('`
 * document.write(): `'eval\('`
 * document.writeln(): `'document\.writeln\('`
+* innerHtml(): `'\.innerHTML'`
 * outerHTML(): `'\.outerHTML'`
 * insertAdjacentHTML(): `'\.insertAdjacentHTML'`
 * document.URL.substring(): `'document\.URL\.substring'`
@@ -24,16 +24,16 @@
 * Angular .trustAsHtml(): `'\.trustAsHtml\('`
 
 ### References
-* innerHtml()
-    * [Mozilla Developer Network innerHTML page](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)
-    * [Dangerous Javascript Functions](http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html)
-    * [OWASP](https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet)
 * eval()
     * [Mozilla Developer Network eval() page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval)
 * document.write()
     * [Dangerous Javascript Functions](http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html)
     * [OWASP](https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet)
 * document.writeln()
+    * [Dangerous Javascript Functions](http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html)
+    * [OWASP](https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet)
+* innerHtml()
+    * [Mozilla Developer Network innerHTML page](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)
     * [Dangerous Javascript Functions](http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html)
     * [OWASP](https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet)
 * outerHTML()
