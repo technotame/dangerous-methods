@@ -62,17 +62,20 @@ class DoScan:
         regexLength = len(regexes)
         self._regexes = regexes
         self._regexLength = regexLength
+        dangerous = 'The following potentially dangerous '
+        references = '<b>References:</b><ul><li></li></ul>'
+        found = ' method has been found: <br><br><b>$val$</b><br><br>'
 
-        issueDetails = ['The following potentially dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>', 
-                        'The following potentially dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
-                        'The following potentially dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
-                        'The following potentially dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
-                        'The following potentially dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
-                        'The following potentially dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
-                        'The following potentially dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
-                        'The following potentially dangerous jQuery method has been found: <br><br><b>$val$</b><br><br>',
-                        'The following potentially dangerous jQuery method has been found: <br><br><b>$val$</b><br><br>',
-                        'The following potentially dangerous Angular method has been found: <br><br><b>$val$</b><br><br>']
+        issueDetails = [dangerous + 'Javascript' + found + references, 
+                        dangerous + 'Javascript' + found + references, 
+                        dangerous + 'Javascript' + found + references, 
+                        dangerous + 'Javascript' + found + references, 
+                        dangerous + 'Javascript' + found + references, 
+                        dangerous + 'Javascript' + found + references, 
+                        dangerous + 'Javascript' + found + references, 
+                        dangerous + 'jQuery' + found + references, 
+                        dangerous + 'jQuery' + found + references, 
+                        dangerous + 'Angular' + found + references]
         issuesDetailsDict = {}
         for counter, regex in enumerate(regexes):
             issuesDetailsDict[regex] = issueDetails[counter]
@@ -107,8 +110,6 @@ class DoScan:
                 offsetArray[0] = span[0]
                 offsetArray[1] = span[1]
                 offset.append(offsetArray)
-
-                print '[*] match group: ' + str(match.group())
 
                 # replace issue detail with regex match
                 detail = self._issueDetailsDict[self._regexes[i]]
@@ -171,7 +172,7 @@ class ScanIssue(IScanIssue):
         return self._issueDetail
 
     def getRemediationDetail(self):
-        return 'Remediation details here. <br><br><b>References:</b><ul><li></li></ul>'
+        return None
 
     def getHttpMessages(self):
         return self._requestResponse
