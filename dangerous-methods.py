@@ -16,7 +16,7 @@ class BurpExtender(IBurpExtender, IScannerCheck):
         self._callbacks.setExtensionName("Dangerous Methods")
         # register as scanner object so we get used for active/passive scans
         self._callbacks.registerScannerCheck(self)
-        print '[*] Extension registered.'
+        print '[*] Dangerous Methods registered.\n\nhttps://gitlab.com/technotame/dangerous-methods\n\ntechnotame 2018'
         return
 
     # 'The Scanner invokes this method for each base request/response that is passively scanned'
@@ -57,8 +57,8 @@ class DoScan:
 
         # set all regexes, issue details, references etc. here
         regexes = [r'eval\(', r'document\.write\(', r'document\.writeln\(', r'\.innerHTML', r'\.outerHTML', 
-                    r'\.insertAdjacentHTML', r'document\.URL\.substring', r'\$\(.*\)\.html\(', 
-                    r'\.append\(', r'\.trustAsHtml\(']
+                    r'\.insertAdjacentHTML', r'document\.URL\.substring', r'\$\(.*\)\.html\(', r'\.append\(', 
+                    r'\.trustAsHtml\(']
 
         regexLength = len(regexes)
         self._regexes = regexes
