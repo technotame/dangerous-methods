@@ -57,7 +57,7 @@ class DoScan:
 
         # set all regexes, issue details, links etc. here
         regexes = [r'eval\(', r'document\.write\(', r'document\.writeln\(', r'\.innerHTML', r'\.outerHTML', 
-                    r'.\insertAdjacentHTML', r'document\.URL\.substring', r'\$\(.*\)\.html\(', 
+                    r'\.insertAdjacentHTML', r'document\.URL\.substring', r'\$\(.*\)\.html\(', 
                     r'\.append\(', r'\.trustAsHtml\(']
         regexLength = len(regexes)
         self._regexes = regexes
