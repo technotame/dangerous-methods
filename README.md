@@ -2,7 +2,7 @@
 A Burp Suite Professional extension for finding the use of potentially dangerous methods/functions in Javascript, jQuery, AngularJS, and others.
 
 * Powered by regular expressions
-* Creates informational issues in Burp Suite
+* Passive scanner checks create informational issues in Burp Suite
 * Written in Python
 * Requires Jython 2.7+ 
 * x checks in 3 frameworks/languages
