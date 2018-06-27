@@ -58,7 +58,7 @@ class DoScan:
         # set all regexes, issue details, links etc. here
         regexes = [r'eval\(', r'document\.write\(', r'document\.writeln\(', r'\.innerHTML', r'\.outerHTML', 
                     r'.\insertAdjacentHTML', r'document\.URL\.substring', r'\$\(.*\)\.html\(', 
-                    r'\$\(.*\)\.append\(', r'\.trustAsHtml\(']
+                    r'\.append\(', r'\.trustAsHtml\(']
         regexLength = len(regexes)
         self._regexes = regexes
         self._regexLength = regexLength
@@ -107,6 +107,8 @@ class DoScan:
                 offsetArray[0] = span[0]
                 offsetArray[1] = span[1]
                 offset.append(offsetArray)
+
+                print '[*] match group: ' + str(match.group())
 
                 # replace issue detail with regex match
                 detail = self._issueDetailsDict[self._regexes[i]]
