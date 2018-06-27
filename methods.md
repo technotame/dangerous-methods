@@ -15,23 +15,23 @@
 * Angular .trustAsHtml(): '\.trustAsHtml\('
 
 ### References
-* innerHtml
+* innerHtml()
     * 
-* eval() in JS
+* eval()
     * 
-* document.write
+* document.write()
     * 
-* document.writeln
+* document.writeln()
     * 
-* outerHTML
+* outerHTML()
     * 
-* insertAdjacentHTML
+* insertAdjacentHTML()
     * 
-* document.URL.substring
+* document.URL.substring()
     * 
 * jQUery .html()
     * 
 * jQuery .append()
     * 
-* Angular .trustAsHtml(
+* Angular .trustAsHtml()
     * 
