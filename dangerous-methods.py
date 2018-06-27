@@ -57,7 +57,7 @@ class DoScan:
 
         # set all regexes, issue details, links etc. here
         regexes = [r'eval\(', r'document\.write\(', r'document\.writeln\(', r'\.innerHTML', r'\.outerHTML', 
-                    r'.\insertAdjacentHTML', r'document\.URL\.substring', r'\$\(.*\)\.html\(']
+                    r'.\insertAdjacentHTML', r'document\.URL\.substring', r'\$\(.*\)\.html\(', r'\$\(.*\)\.append\(']
         regexLength = len(regexes)
         self._regexes = regexes
         self._regexLength = regexLength
@@ -69,6 +69,7 @@ class DoScan:
                         'The following potentially dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
                         'The following potentially dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
                         'The following potentially dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
+                        'The following potentially dangerous jQuery method has been found: <br><br><b>$val$</b><br><br>',
                         'The following potentially dangerous jQuery method has been found: <br><br><b>$val$</b><br><br>']
         issuesDetailsDict = {}
         for counter, regex in enumerate(regexes):
