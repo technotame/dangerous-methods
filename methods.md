@@ -1,6 +1,6 @@
 ### To Add
 * [dangerous PHP](https://www.eukhost.com/blog/webhosting/dangerous-php-functions-must-be-disabled)
-* jQuery .insertAfter()
+
 * jQuery .prepend()
 * jQuery .prependTo()
 * jQuery .wrap()
@@ -22,6 +22,7 @@
 * Angular ng-bind-html-unsafe: `ng-bind-html-unsafe`
 * .setAttribute(: `\.setAttribute\(`
 * jQuery .insertBefore(): `\.insertBefore\(`
+* jQuery .insertAfter(): `\.insertAfter\(`
 
 ### References
 * eval()
@@ -56,4 +57,6 @@
 * .setAttribute(
     * [OWASP](https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet)
 * jQuery .insertBefore()
+    * [Unsafe jQuery Methods](https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods)
+* jQuery .insertAfter()
     * [Unsafe jQuery Methods](https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods)
