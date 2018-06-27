@@ -59,7 +59,7 @@ class DoScan:
         regexes = [r'eval\(', r'document\.write\(', r'document\.writeln\(', r'\.innerHTML', r'\.outerHTML', 
                     r'\.insertAdjacentHTML', r'document\.URL\.substring', r'\$\(.*\)\.html\(', r'\.append\(', 
                     r'\.trustAsHtml\(', r'ng-bind-html-unsafe', r'\.setAttribute\(', r'\.insertBefore\(',
-                    r'\.insertAfter\(', r'\.prepend\(']
+                    r'\.insertAfter\(', r'\.prepend\(', r'\.prependTo\(']
 
         ref = '<b>References:</b>'
         references = [ref + '<ul><li>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval</li></ul>', 
@@ -80,6 +80,7 @@ class DoScan:
                         ref + '<ul><li></li>https://docs.angularjs.org/guide/security</ul>',
                         ref + '<ul><li>http://erikaugust.com/thoughts/ng-bind-html/</li></ul>',
                         ref + '<ul><li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
+                        ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
                         ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
                         ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
                         ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>']
@@ -110,6 +111,7 @@ class DoScan:
                         dangerous + 'AngularJS' + found,
                         dangerous + 'AngularJS' + found,
                         dangerous + 'Javascript' + found,
+                        dangerous + 'jQuery' + found,
                         dangerous + 'jQuery' + found,
                         dangerous + 'jQuery' + found,
                         dangerous + 'jQuery' + found]
