@@ -141,9 +141,6 @@ class ScanIssue(IScanIssue):
         # self._severity = severity
         self._issueDetail = issueDetail
 
-        # TODO
-        # create dict of remediation details, keyed with regex?
-
     # getters for issue information
     def getUrl(self):
         return self._url
