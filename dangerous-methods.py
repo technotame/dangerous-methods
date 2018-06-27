@@ -17,8 +17,7 @@ class BurpExtender(IBurpExtender, IScannerCheck):
         self._callbacks.setExtensionName("Dangerous Methods")
         # register as scanner object so we get used for active/passive scans
         self._callbacks.registerScannerCheck(self)
-        print '[*] Dangerous Methods extension registered.\n\nhttps://gitlab\
-                .com/technotame/dangerous-methods\n\ntechnotame 2018'
+        print '[*] Dangerous Methods extension registered.\n\nhttps://gitlab.com/technotame/dangerous-methods\n\ntechnotame 2018'
         return
 
     # 'The Scanner invokes this method for each base request/response that is
@@ -67,7 +66,8 @@ class DoScan:
         regexes = [r'eval\(', r'document\.write\(', r'document\.writeln\(', r'\.innerHTML', r'\.outerHTML',
                    r'\.insertAdjacentHTML', r'document\.URL\.substring', r'\$\(.*\)\.html\(', r'\.append\(',
                    r'\.trustAsHtml\(', r'ng-bind-html-unsafe', r'\.setAttribute\(', r'\.insertBefore\(',
-                   r'\.insertAfter\(', r'\.prepend\(', r'\.prependTo\(', r'\.wrap\(', r'\.wrapAll\(']
+                   r'\.insertAfter\(', r'\.prepend\(', r'\.prependTo\(', r'\.wrap\(', r'\.wrapAll\(',
+                   r'\.before\(', r'\.after\(']
 
         ref = '<b>References:</b>'
         references = [ref + '<ul><li>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval</li></ul>',
@@ -88,6 +88,8 @@ class DoScan:
                       ref + '<ul><li></li>https://docs.angularjs.org/guide/security</ul>',
                       ref + '<ul><li>http://erikaugust.com/thoughts/ng-bind-html/</li></ul>',
                       ref + '<ul><li>https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</li></ul>',
+                      ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
+                      ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
                       ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
                       ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
                       ref + '<ul><li>https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods</li></ul>',
@@ -114,7 +116,8 @@ class DoScan:
         issueDetails = [jsFound, jsFound, jsFound, jsFound, jsFound, jsFound,
                         jsFound, jqueryFound, jqueryFound, angularFound,
                         angularFound, jsFound, jqueryFound, jqueryFound,
-                        jqueryFound, jqueryFound, jqueryFound, jqueryFound]
+                        jqueryFound, jqueryFound, jqueryFound, jqueryFound,
+                        jqueryFound, jqueryFound]
 
         issuesDetailsDict = {}
         for counter, regex in enumerate(regexes):
