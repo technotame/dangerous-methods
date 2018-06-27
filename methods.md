@@ -1,7 +1,5 @@
 ### To Add
 * [dangerous PHP](https://www.eukhost.com/blog/webhosting/dangerous-php-functions-must-be-disabled)
-
-* jQuery .prepend()
 * jQuery .prependTo()
 * jQuery .wrap()
 * jQuery .wrapAll()
@@ -23,6 +21,7 @@
 * .setAttribute(: `\.setAttribute\(`
 * jQuery .insertBefore(): `\.insertBefore\(`
 * jQuery .insertAfter(): `\.insertAfter\(`
+* jQuery .prepend(): `\.prepend\(`
 
 ### References
 * eval()
@@ -59,4 +58,6 @@
 * jQuery .insertBefore()
     * [Unsafe jQuery Methods](https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods)
 * jQuery .insertAfter()
+    * [Unsafe jQuery Methods](https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods)
+* jQuery .prepend()
     * [Unsafe jQuery Methods](https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods)
