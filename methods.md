@@ -21,6 +21,7 @@
 * jQUery .html(): `'\$\(.*\)\.html\('`
 * jQuery .append(): `'\.append\('`
 * Angular .trustAsHtml(): `'\.trustAsHtml\('`
+* Angular ng-bind-html-unsafe: `ng-bind-html-unsafe`
 
 ### References
 * eval()

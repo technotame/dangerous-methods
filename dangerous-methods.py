@@ -101,8 +101,8 @@ class DoScan:
                         dangerous + 'Javascript' + found, 
                         dangerous + 'jQuery' + found, 
                         dangerous + 'jQuery' + found, 
-                        dangerous + 'Angular' + found,
-                        dangerous + 'Angular' + found]
+                        dangerous + 'AngularJS' + found,
+                        dangerous + 'AngularJS' + found]
 
         issuesDetailsDict = {}
         for counter, regex in enumerate(regexes):
