@@ -1,6 +1,5 @@
 ### To Add
 * [dangerous PHP](https://www.eukhost.com/blog/webhosting/dangerous-php-functions-must-be-disabled)
-* Angular ng-bind-html-unsafe
 * HTML Element.setAttribute(...) see OWASP reference
 * .insertBefore()
 * .insertAfter()
@@ -50,4 +49,6 @@
 * jQuery .append()
     * [Unsafe jQuery Methods](https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods)
 * Angular .trustAsHtml()
-    * 
+    * [AngularJS Security Guide](https://docs.angularjs.org/guide/security)
+* Angular ng-bind-html-unsafe
+    * [ng-bind-html-unsafe](http://erikaugust.com/thoughts/ng-bind-html/)
