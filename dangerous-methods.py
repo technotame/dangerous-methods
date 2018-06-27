@@ -1,6 +1,7 @@
 from burp import IBurpExtender
 from burp import IScannerCheck
 from burp import IScanIssue
+from java.lang import RuntimeException
 from array import array
 import re
 
@@ -22,15 +23,14 @@ class BurpExtender(IBurpExtender, IScannerCheck):
     # passing the self object as well for access to helper functions, etc.
     # java.util.List<IScanIssue> doPassiveScan(IHttpRequestResponse baseRequestResponse)
     def doPassiveScan(self, baseRequestResponse):
-        print '[*] Passive scan is a go.'
         try:
             scanObject = DoScan(baseRequestResponse, self._callbacks)
         except:
-            print '[*] Failed to create scanObject!'
+            raise RuntimeException('Failed to create scanObject.')
         try:
             scanResult = scanObject.regexSearch()
         except:
-            print '[*] Failed on call to regexSearch!'
+            raise RuntimeException('Failed to call scanObject.regexSearch.')
         
         if(len(scanResult) > 0):
             return scanResult
@@ -55,10 +55,11 @@ class DoScan:
         # get local instance of getHelpers for helper functionss
         self._helpers = self._callbacks.getHelpers()
 
-        # set all regexes, issue details, links etc. here
+        # set all regexes, issue details, references etc. here
         regexes = [r'eval\(', r'document\.write\(', r'document\.writeln\(', r'\.innerHTML', r'\.outerHTML', 
                     r'\.insertAdjacentHTML', r'document\.URL\.substring', r'\$\(.*\)\.html\(', 
                     r'\.append\(', r'\.trustAsHtml\(']
+
         regexLength = len(regexes)
         self._regexes = regexes
         self._regexLength = regexLength
@@ -76,6 +77,7 @@ class DoScan:
                         dangerous + 'jQuery' + found + references, 
                         dangerous + 'jQuery' + found + references, 
                         dangerous + 'Angular' + found + references]
+
         issuesDetailsDict = {}
         for counter, regex in enumerate(regexes):
             issuesDetailsDict[regex] = issueDetails[counter]
@@ -95,12 +97,10 @@ class DoScan:
 
         for i in range(0, self._regexLength):
             offset = []
-            # compile regex
             try:
                 compiledRegex = re.compile(self._regexes[i], re.DOTALL)
             except:
-                print '[*] Failed to compile regex!'
-                # need to throw exception here
+                raise RuntimeException('Failed to compile regular expression.')
             matched = compiledRegex.finditer(self._helpers.bytesToString(response))
 
             # find offsets for all matches
@@ -116,12 +116,15 @@ class DoScan:
                 detail = detail.replace("$val$", str(match.group()))
 
                 # create temp ScanIssue and add to ScanIssue list
-                tempIssue = ScanIssue(self._requestResponse.getHttpService(), self._helpers.analyzeRequest(self._requestResponse).getUrl(), 
-                    [self._callbacks.applyMarkers(self._requestResponse, None, offset)], self._issueName, False, detail)
+                try:
+                    tempIssue = ScanIssue(self._requestResponse.getHttpService(), self._helpers.analyzeRequest(self._requestResponse).getUrl(), 
+                        [self._callbacks.applyMarkers(self._requestResponse, None, offset)], self._issueName, False, detail)
+                except:
+                    raise RuntimeException('Failed to create issue.')
                 try:
                     issues.append(tempIssue)
                 except:
-                    print '[*] Appending issue failed'
+                    raise RuntimeException('Failed to append issue.')
 
         return issues
 
