@@ -7,7 +7,8 @@ A Burp Suite extension for finding dangerous functions/methods in Javascript, jQ
 * Requires Jython 2.7+ 
 
 ### Todo
-* Write issue backgrounds
+* Write getRemediationDetail
+* Collect references
 * Send output properly
-* Throw exceptions
+* Throw exceptions where needed
 * Add new dangerous methods
