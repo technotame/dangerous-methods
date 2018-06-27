@@ -5,6 +5,7 @@ A Burp Suite extension for finding the use of potentially dangerous methods/func
 * Creates informational issues in Burp Suite
 * Written in Python
 * Requires Jython 2.7+ 
+* Requires Burp Suite Professional
 
 ### Todo
 * Collect references
@@ -12,5 +13,5 @@ A Burp Suite extension for finding the use of potentially dangerous methods/func
 * Send output properly
 * Add new dangerous methods
 * Add extension information to registerExtenderCallbacks output
-* Find out if Burp Pro is needed
+* ~~Find out if Burp Pro is needed~~
 * ~~Throw exceptions where needed~~
