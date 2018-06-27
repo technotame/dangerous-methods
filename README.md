@@ -1,11 +1,10 @@
 # Dangerous Methods
-A Burp Suite extension for finding the use of potentially dangerous methods/functions in Javascript, jQuery, AngularJS, and others.
+A Burp Suite Professional extension for finding the use of potentially dangerous methods/functions in Javascript, jQuery, AngularJS, and others.
 
 * Powered by regular expressions
 * Creates informational issues in Burp Suite
 * Written in Python
 * Requires Jython 2.7+ 
-* Requires Burp Suite Professional
 
 ### Todo
 * Collect references
