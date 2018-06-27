@@ -63,11 +63,14 @@ class DoScan:
         self._helpers = self._callbacks.getHelpers()
 
         # set all regexes, issue details, references etc. here
-        regexes = [r'eval\(', r'document\.write\(', r'document\.writeln\(', r'\.innerHTML', r'\.outerHTML',
-                   r'\.insertAdjacentHTML', r'document\.URL\.substring', r'\$\(.*\)\.html\(', r'\.append\(',
-                   r'\.trustAsHtml\(', r'ng-bind-html-unsafe', r'\.setAttribute\(', r'\.insertBefore\(',
-                   r'\.insertAfter\(', r'\.prepend\(', r'\.prependTo\(', r'\.wrap\(', r'\.wrapAll\(',
-                   r'\.before\(', r'\.after\(']
+        regexes = [r'eval\(', r'document\.write\(', r'document\.writeln\(',
+                   r'\.innerHTML', r'\.outerHTML',
+                   r'\.insertAdjacentHTML', r'document\.URL\.substring',
+                   r'\$\(.*\)\.html\(', r'\.append\(',
+                   r'\.trustAsHtml\(', r'ng-bind-html-unsafe',
+                   r'\.setAttribute\(', r'\.insertBefore\(',
+                   r'\.insertAfter\(', r'\.prepend\(', r'\.prependTo\(',
+                   r'\.wrap\(', r'\.wrapAll\(', r'\.before\(', r'\.after\(']
 
         ref = '<b>References:</b>'
         references = [ref + '<ul><li>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval</li></ul>',
