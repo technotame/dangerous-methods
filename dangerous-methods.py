@@ -58,12 +58,18 @@ class DoScan:
         self._helpers = self._callbacks.getHelpers()
 
         # set all regexes, issue details, links etc. here
-        regexes = ['eval', r'document\.write']
+        regexes = [r'eval\(', r'document\.write\(', r'document\.writeln\(', r'\.innerHTML', r'\.outerHTML', 
+                    r'.\insertAdjacentHTML']
         regexLength = len(regexes)
         self._regexes = regexes
         self._regexLength = regexLength
 
-        issueDetails = ['eval issue', 'document.write issue']
+        issueDetails = ['The following dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>', 
+                        'The following dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
+                        'The following dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
+                        'The following dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
+                        'The following dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>',
+                        'The following dangerous Javascript method has been found: <br><br><b>$val$</b><br><br>']
         issuesDetailsDict = {}
         for counter, regex in enumerate(regexes):
             issuesDetailsDict[regex] = issueDetails[counter]
@@ -99,10 +105,13 @@ class DoScan:
                 offsetArray[1] = span[1]
                 offset.append(offsetArray)
 
+                # replace issue detail with regex match
+                detail = self._issueDetailsDict[self._regexes[i]]
+                detail = detail.replace("$val$", str(match.group()))
+
                 # create temp ScanIssue and add to ScanIssue list
                 tempIssue = ScanIssue(self._requestResponse.getHttpService(), self._helpers.analyzeRequest(self._requestResponse).getUrl(), 
-                    [self._callbacks.applyMarkers(self._requestResponse, None, offset)],
-                    self._issueName, False, self._issueDetailsDict[self._regexes[i]])
+                    [self._callbacks.applyMarkers(self._requestResponse, None, offset)], self._issueName, False, detail)
                 try:
                     issues.append(tempIssue)
                 except:
