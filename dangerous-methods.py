@@ -17,7 +17,7 @@ class BurpExtender(IBurpExtender, IScannerCheck):
         self._callbacks.setExtensionName("Dangerous Methods")
         # register as scanner object so we get used for active/passive scans
         self._callbacks.registerScannerCheck(self)
-        print '[*] Dangerous Methods extension registered.\n\nhttps://gitlab.com/technotame/dangerous-methods\n\nCopyright (c) 2018 TechnoTame'
+        print 'Dangerous Methods extension registered.\n\nhttps://gitlab.com/technotame/dangerous-methods\n\nCopyright (c) 2018 TechnoTame'
         return
 
     # 'The Scanner invokes this method for each base request/response that is
@@ -126,7 +126,7 @@ class DoScan:
             issuesDetailsDict[regex] = issueDetails[counter]
         self._issueDetailsDict = issuesDetailsDict
 
-        self._issueName = 'Dangerous Method Found'
+        self._issueName = 'Potentially Dangerous Method Found'
         self._severity = 'Information'
 
         return
