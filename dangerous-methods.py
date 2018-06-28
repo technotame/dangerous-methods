@@ -1,8 +1,25 @@
-# Copyright (c) 2018 TechnoTame
+"""
+Name:           Dangerous Methods
+Version:        1.0.1
+Date:           06/28/2018
+Author:         TechnoTame - technotame@0xfeed.io
+Gitlab:         https://gitlab.com/technotame/dangerous-methods
+Description:    This extension uses regular expressions to detect the use of
+potentially dangerous methods/functions in Javascript, jQuery, AngularJS, and
+others. It requires Jython 2.7+.
+
+I reviewed the following Burp extensions to help write this:
+- ActiveScan++:
+- SQLiPy: https://github.com/PortSwigger/sqli-py
+- http://blog.opensecurityresearch.com/2014/03/extending-burp.html
+
+Copyright (c) 2018 TechnoTame
+"""
 
 try:
     from burp import IBurpExtender, IScannerCheck, IScanIssue
     from java.lang import RuntimeException
+    from java.io import PrintWriter
     from array import array
     import re
 except ImportError:
@@ -22,10 +39,13 @@ class BurpExtender(IBurpExtender, IScannerCheck):
         self._callbacks.setExtensionName("Dangerous Methods")
         # register as scanner object so we get used for active/passive scans
         self._callbacks.registerScannerCheck(self)
-        print """Successfully loaded Dangerous Methods v""" + VERSION + """\n
+
+        stdout = PrintWriter(callbacks.getStdout(), True)
+        stdout.println("""Successfully loaded Dangerous Methods v""" + VERSION + """\n
 Repository @ https://gitlab.com/technotame/dangerous-methods
 Send feedback or bug reports to technotame@0xfeed.io
-Copyright (c) 2018 Technotame"""
+Copyright (c) 2018 Technotame""")
+
         return
 
     # 'The Scanner invokes this method for each base request/response that is

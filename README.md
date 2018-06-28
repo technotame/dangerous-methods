@@ -17,12 +17,13 @@ A Burp Suite Professional extension for finding the use of potentially dangerous
     * Determine valid identifier regex to precede JS methods
     * Should they be broad enough to prefer false positives over false negatives?
 * Rework issue details and references
-* Send output properly
+
 * Add new dangerous methods
     * Look into templating languages
 * Add extension information to registerExtenderCallbacks output
 * Possibly load regexes/references from file?
 * Write better/more realistic test app
+* ~~Send output properly~~
 * ~~Find out if Burp Pro is needed~~
 * ~~Throw exceptions where needed~~
 * ~~Add screenshots~~
