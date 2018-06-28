@@ -33,6 +33,7 @@ VERSION = '1.0'
 
 
 class BurpExtender(IBurpExtender, IScannerCheck):
+
     # get references to callbacks, called when extension is loaded
     def registerExtenderCallbacks(self, callbacks):
         # get a local instance of callbacks object
