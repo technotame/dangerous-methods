@@ -1,9 +1,13 @@
 # Copyright (c) 2018 TechnoTame
 
-from burp import IBurpExtender, IScannerCheck, IScanIssue
-from java.lang import RuntimeException
-from array import array
-import re
+try:
+    from burp import IBurpExtender, IScannerCheck, IScanIssue
+    from java.lang import RuntimeException
+    from array import array
+    import re
+except ImportError:
+    print "Failed to load dependencies."
+
 
 # inherit IBurpExtender as base class, which defines registerExtenderCallbacks
 # inherit IScannerCheck to register as custom scanner
