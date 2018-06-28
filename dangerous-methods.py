@@ -17,7 +17,10 @@ class BurpExtender(IBurpExtender, IScannerCheck):
         self._callbacks.setExtensionName("Dangerous Methods")
         # register as scanner object so we get used for active/passive scans
         self._callbacks.registerScannerCheck(self)
-        print 'Dangerous Methods extension registered.\n\nhttps://gitlab.com/technotame/dangerous-methods\n\nCopyright (c) 2018 TechnoTame'
+        print """Dangerous Methods extension registered.\n\n
+Repository at https://gitlab.com/technotame/dangerous-methods
+Send feedback or bug reports to technotame@0xfeed.io
+Copyright (c) 2018 Technotame"""
         return
 
     # 'The Scanner invokes this method for each base request/response that is
