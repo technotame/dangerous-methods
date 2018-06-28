@@ -11,6 +11,7 @@ others. It requires Jython 2.7+.
 I reviewed the following Burp extensions to help write this:
 - ActiveScan++:
 - SQLiPy: https://github.com/PortSwigger/sqli-py
+- Yara: https://github.com/PortSwigger/yara/
 - http://blog.opensecurityresearch.com/2014/03/extending-burp.html
 
 Copyright (c) 2018 TechnoTame
