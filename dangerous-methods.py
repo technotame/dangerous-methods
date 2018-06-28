@@ -8,6 +8,7 @@ try:
 except ImportError:
     print "Failed to load dependencies."
 
+VERSION = '1.0'
 
 # inherit IBurpExtender as base class, which defines registerExtenderCallbacks
 # inherit IScannerCheck to register as custom scanner
@@ -21,8 +22,8 @@ class BurpExtender(IBurpExtender, IScannerCheck):
         self._callbacks.setExtensionName("Dangerous Methods")
         # register as scanner object so we get used for active/passive scans
         self._callbacks.registerScannerCheck(self)
-        print """Dangerous Methods extension registered.\n\n
-Repository at https://gitlab.com/technotame/dangerous-methods
+        print """Successfully loaded Dangerous Methods v""" + VERSION + """\n
+Repository @ https://gitlab.com/technotame/dangerous-methods
 Send feedback or bug reports to technotame@0xfeed.io
 Copyright (c) 2018 Technotame"""
         return
