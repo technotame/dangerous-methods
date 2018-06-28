@@ -1,6 +1,6 @@
-from burp import IBurpExtender
-from burp import IScannerCheck
-from burp import IScanIssue
+# Copyright (c) 2018 TechnoTame
+
+from burp import IBurpExtender, IScannerCheck, IScanIssue
 from java.lang import RuntimeException
 from array import array
 import re
