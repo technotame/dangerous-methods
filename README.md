@@ -4,14 +4,15 @@ A Burp Suite Professional extension for finding the use of potentially dangerous
 * Passive scanner checks create informational issues in Burp Suite
 * Powered by regular expressions
 * Written in Python
-* Requires Jython 2.7+ 
-* x checks across 3 frameworks/languages
+* Requires Jython 2.7+
+* 21 checks across 3 frameworks/languages
 * Pull requests welcome!
 
 ### Screenshots
 [![Example Issue](screenshots/dangerous-methods-issue.png)]
 
 ### Todo
+* Compile regexes ahead of time
 * Collect references
 * Make regexes longer/more robust/more accurate
     * Determine valid identifier regex to precede JS methods
