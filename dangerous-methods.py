@@ -144,7 +144,10 @@ class DoScan:
                 compiledRegex = re.compile(self._regexes[i], re.DOTALL)
             except:
                 raise RuntimeException('Failed to compile regular expression.')
-            matched = compiledRegex.finditer(self._helpers.bytesToString(response))
+            try:
+                matched = compiledRegex.finditer(self._helpers.bytesToString(response))
+            except:
+                raise RuntimeException('Regular expression search failed.')
 
             # find offsets for all matches
             for match in matched:
