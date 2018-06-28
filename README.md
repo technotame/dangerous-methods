@@ -12,7 +12,6 @@ A Burp Suite Professional extension for finding the use of potentially dangerous
 [![Example Issue](screenshots/dangerous-methods-issue.png)]
 
 ### Todo
-* Compile regexes ahead of time
 * Collect references
 * Make regexes longer/more robust/more accurate
     * Determine valid identifier regex to precede JS methods
