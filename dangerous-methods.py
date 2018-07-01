@@ -96,11 +96,18 @@ class DoScan:
         regexes = [r'eval\(', r'document\.write\(', r'document\.writeln\(',
                    r'\.innerHTML', r'\.outerHTML',
                    r'\.insertAdjacentHTML', r'document\.URL\.substring',
-                   r'\$\(.*\)\.html\(', r'\.append\(',
+                   r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.html\(',
+                   r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.append\(',
                    r'\.trustAsHtml\(', r'ng-bind-html-unsafe',
-                   r'\.setAttribute\(', r'\.insertBefore\(',
-                   r'\.insertAfter\(', r'\.prepend\(', r'\.prependTo\(',
-                   r'\.wrap\(', r'\.wrapAll\(', r'\.before\(', r'\.after\(']
+                   r'\.setAttribute\(',
+                   r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.insertBefore\(',
+                   r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.insertAfter\(',
+                   r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.prepend\(',
+                   r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.prependTo\(',
+                   r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.wrap\(',
+                   r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.wrapAll\(',
+                   r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.before\(',
+                   r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.after\(']
 
         ref = '<b>References:</b>'
         badJSlink = '<li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>'
