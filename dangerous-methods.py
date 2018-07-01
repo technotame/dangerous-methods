@@ -94,7 +94,8 @@ class DoScan:
 
         # set all regexes, issue details, references etc. here
         regexes = [r'eval\(', r'document\.write\(', r'document\.writeln\(',
-                   r'\.innerHTML', r'\.outerHTML',
+                   r'[a-zA-Z0-9\'\"\.\-_ \t]*\.innerHTML',
+                   r'[a-zA-Z0-9\'\"\.\-_ \t]*\.outerHTML',
                    r'\.insertAdjacentHTML', r'document\.URL\.substring',
                    r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.html\(',
                    r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.append\(',
