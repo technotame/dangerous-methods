@@ -14,13 +14,15 @@
 <body>
   <script src="script.js"></script>
 
-  <h3>Dangerous Method test suite:</h3>
+  <h3>Dangerous Methods test suite:</h3>
 	<ul>
     <li>eval('alert(1)')</li>
     <li>document.write()</li>
     <li>document.writeln</li>
     <li>element.innerHTML</li>
     <li>element.outerHTML</li>
+    <li>element.insertAdjacentHTML()</li>
+    <li>document.URL.substring</li>
     <li>$( "div.demo-container" ).html()</li>
     <li>$( "div.demo-container" ).append()</li>
     <li>trustAsHtml()</li>
