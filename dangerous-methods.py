@@ -102,7 +102,7 @@ class DoScan:
                    r'document\.URL\.substring',
                    r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.html\(',
                    r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.append\(',
-                   r'\.trustAsHtml\(', r'ng-bind-html-unsafe',
+                   r'\.trustAsHtml', r'ng-bind-html-unsafe',
                    r'[a-zA-Z0-9\'\"\.\-_ \t]*\.setAttribute\(',
                    r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.insertBefore\(',
                    r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.insertAfter\(',
