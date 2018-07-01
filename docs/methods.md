@@ -1,7 +1,6 @@
 ### To Add
 * [dangerous PHP](https://www.eukhost.com/blog/webhosting/dangerous-php-functions-must-be-disabled)
 
-
 ### Regexes Added
 * eval(): `'eval\('`
 * document.write(): `'eval\('`
@@ -23,7 +22,7 @@
 * jQuery .wrapAll(): `\.wrapAll\(`
 * jQuery .before(): `\.before\(`
 * jQuery .after(): `\.after\(`
-* React dangerouslySetInnerHTML: `dangerouslySetInnerHTML`
+* React dangerouslySetInnerHTML: `'dangerouslySetInnerHTML'`
 
 ### References
 * eval()
@@ -74,4 +73,6 @@
 * jQuery .after()
       * [Unsafe jQuery Methods](https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods)
 * React dangerouslySetInnerHTML
-* [React Docs](https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml)
+    * [React Docs](https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml)
+* Vue.JS v-html
+    * [Vue.JS Docs](https://vuejs.org/v2/api/#v-html)

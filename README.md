@@ -5,7 +5,7 @@ A Burp Suite Professional extension for finding the use of potentially dangerous
 * Powered by regular expressions
 * Written in Python
 * Requires Jython 2.7+
-* 21 checks across 4 frameworks/languages
+* 22 checks across 5 frameworks/languages
 * Pull requests welcome!
 
 ### Screenshots
@@ -15,7 +15,7 @@ A Burp Suite Professional extension for finding the use of potentially dangerous
 * Collect references
 * Make regexes longer/more robust/more accurate
     * ~~Determine valid identifier regex to precede JS methods~~
-    * Should they be broad enough to prefer false positives over false negatives?
+    * Prefer false positives over false negatives
 * Rework issue details and references
 * Add new dangerous methods
     * Look into templating languages
