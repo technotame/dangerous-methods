@@ -107,7 +107,8 @@ class DoScan:
                    r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.wrap\(',
                    r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.wrapAll\(',
                    r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.before\(',
-                   r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.after\(']
+                   r'\$\([a-zA-Z0-9\'\"\.\-_ \t]*\)\.after\(',
+                   r'dangerouslySetInnerHTML']
 
         ref = '<b>References:</b>'
         badJSlink = '<li>http://blog.blueclosure.com/2017/09/javascript-dangerous-functions-part-1.html</li>'
@@ -134,7 +135,8 @@ class DoScan:
                       ref + '<ul>' + badjQueryLink + '</ul>',
                       ref + '<ul>' + badjQueryLink + '</ul>',
                       ref + '<ul>' + badjQueryLink + '</ul>',
-                      ref + '<ul>' + badjQueryLink + '</ul>']
+                      ref + '<ul>' + badjQueryLink + '</ul>',
+                      ref + '<ul><li>https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml</li></ul>']
 
         self._references = references
         referencesDict = {}
@@ -151,12 +153,13 @@ class DoScan:
         jsFound = dangerous + 'Javascript' + found
         jqueryFound = dangerous + 'jQuery' + found
         angularFound = dangerous + 'AngularJS' + found
+        reactFound = dangerous + 'React' + found
 
         issueDetails = [jsFound, jsFound, jsFound, jsFound, jsFound, jsFound,
                         jsFound, jqueryFound, jqueryFound, angularFound,
                         angularFound, jsFound, jqueryFound, jqueryFound,
                         jqueryFound, jqueryFound, jqueryFound, jqueryFound,
-                        jqueryFound, jqueryFound]
+                        jqueryFound, jqueryFound, reactFound]
 
         issuesDetailsDict = {}
         for counter, regex in enumerate(regexes):
