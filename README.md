@@ -9,7 +9,7 @@ A Burp Suite Professional extension for finding the use of potentially dangerous
 * Pull requests welcome!
 
 ### Screenshots
-[![Example Issue](screenshots/dangerous-methods-issue.png)]
+[![Example Issue](screenshots/dangerous-methods-issue2.png)]
 
 ### Todo
 * Collect references
