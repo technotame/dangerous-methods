@@ -1,6 +1,6 @@
 """
 Name:           Dangerous Methods
-Version:        1.0.1
+Version:        1.0.0
 Date:           06/28/2018
 Author:         TechnoTame - technotame@0xfeed.io
 Gitlab:         https://gitlab.com/technotame/dangerous-methods
@@ -26,7 +26,7 @@ try:
 except ImportError:
     print "Failed to load dependencies."
 
-VERSION = '1.0.1'
+VERSION = '1.0.0'
 
 # inherit IBurpExtender as base class, which defines registerExtenderCallbacks
 # inherit IScannerCheck to register as custom scanner
